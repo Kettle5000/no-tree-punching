@@ -84,9 +84,9 @@ public final class Helpers
     {
         if (!stack.isEmpty() && !level.isClientSide)
         {
-            final ItemEntity entity = new ItemEntity(level, player.getX(), player.getY() + 0.5, player.getZ(), stack);
-            entity.setPickUpDelay(0);
-            level.addFreshEntity(entity);
+            if (!player.getInventory().add(stack)) {
+                player.drop(stack, false);
+            }
         }
     }
 
